@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA,KACE,+BAAmC,CACnC,QAAQ,CACR,SAAS,CACT,eACF,CAEA,OACE,aACF","file":"src.e69a9891.css","sourceRoot":"../src","sourcesContent":["body {\n  font-family: 'Orbitron', sans-serif;\n  margin:0;\n  padding:0;\n  overflow:hidden;\n}\n\ncanvas {\n  display:block;\n}\n"]}
