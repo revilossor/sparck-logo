@@ -24,14 +24,14 @@ function start() {
   const lines = new PIXI.Graphics()
   lines
   	.lineStyle(12, colour)
-    .drawRoundedRect(-200, -300, 400, 600, 50)
-    .drawRoundedRect(-200, 160, 400, 140, 50)
+    .drawRoundedRect(-200, -300, 400, 600, 45)
+    .drawRoundedRect(-200, 160, 400, 140, 45)
     .drawRect(-200, 160, 400, 1);
 
   const flames = new PIXI.Graphics()
   flames
-    .lineStyle(12, 0xff00ff)
-    .drawRect(-189, -290, 377, 440);
+    .beginFill(0x2c2c2c)
+    .drawRect(-194, -293, 388, 447);
 
   var style = {
     fontFamily : 'Orbitron',
@@ -45,8 +45,8 @@ function start() {
   text.position.set(0,225);
 
   stage.addChild(text);
-  stage.addChild(lines)
   stage.addChild(flames)
+  stage.addChild(lines)
 
   const uniforms = {}
   uniforms.elapsed = {
@@ -58,7 +58,6 @@ function start() {
 
   flames.filters = [filter];
 
-  // TODO flame shader based on the shadertoy
   // TODO voice stuff?
 
   app.stage.addChild(stage);
@@ -69,7 +68,7 @@ function start() {
 }
 
 function update(delta) {
-  elapsed += 1;
+  elapsed += delta;
   filter.uniforms.elapsed = elapsed
 }
 
