@@ -2,6 +2,7 @@ import * as PIXI from 'pixi.js'
 
 const width = 800
 const height = 600
+const colour = 0xff0000
 
 const app = new PIXI.Application({
 	autoResize: true,
@@ -13,21 +14,36 @@ const app = new PIXI.Application({
 document.body.appendChild(app.view);
 
 const graphics = new PIXI.Graphics()
-const container = new PIXI.Container()
+const stage = new PIXI.Container()
 
 const border = graphics
-	.lineStyle(8, 0xff0000)
-  .drawRoundedRect(-200, -300, 400, 600, 100);
+	.lineStyle(12, colour)
+  .drawRoundedRect(-200, -300, 400, 600, 50);
 
-container.addChild(border)
+var style = {
+  fontFamily : 'Orbitron',
+  fontSize: 96,
+  align: 'center',
+  fill : colour,
+};
 
-app.stage.addChild(container);
+var text = new PIXI.Text('spärck',style);
+text.anchor.set(0.5, 0.5);
+text.position.set(0,225);
+
+stage.addChild(text);
+stage.addChild(border)
+
+// TODO flame shader based on the shadertoy
+// TODO voice stuff?
+
+app.stage.addChild(stage);
 
 window.addEventListener('resize', resize);
 function resize() {
 	app.renderer.resize(window.innerWidth, window.innerHeight);
-  container.x = app.screen.width / 2;
-  container.y = app.screen.height / 2;
+  stage.x = app.screen.width / 2;
+  stage.y = app.screen.height / 2;
 }
 
 resize();
